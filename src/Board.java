@@ -112,6 +112,56 @@ public class Board
     }
     
     /**
+     * @brief Gets which player placed a pawn on the board.
+     * @param x Pawn's position's abscissa.
+     * @param y Pawn's position's ordinate.
+     * @return Reference to the player or `NULL`.
+     */
+    public Player getAt(int x, int y)
+    {
+        if(x >= 0)
+        {
+            if(x < this.width)
+            {
+                if(y >= 0)
+                {
+                    if(y < this.height)
+                    {
+                        return this.board[x][y];
+                    }
+                    else
+                    {
+                        throw new InvalidParameterException("A position's ordinate cannot be outside the board.");
+                    }
+                }
+                else
+                {
+                    throw new InvalidParameterException("A position's ordinate cannot be negative.");
+                }
+            }
+            else
+            {
+                throw new InvalidParameterException("A position's abscissa cannot be outside the board.");
+            }
+        }
+        else
+        {
+            throw new InvalidParameterException("A position's abscissa cannot be negative.");
+        }
+    }
+    
+    /**
+     * @brief Gets which player placed a pawn on the board.
+     * @param p Reference to the position on the board.
+     * @return Reference to the player or `NULL`.
+     * @see Board#getAt(int, int)
+     */
+    public Player getAt(Position p)
+    {
+        return this.getAt(p.getX(), p.getY());
+    }
+    
+    /**
      * @brief Gets a board's string representation.
      * @return Board's string representation.
      * @see java.lang.Object#toString()
