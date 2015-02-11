@@ -1,4 +1,6 @@
 import java.security.InvalidParameterException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @brief Represents a two-dimensional position.
@@ -15,6 +17,8 @@ public class Position
      * @brief Holds the position's ordinate.
      */
     protected final int y;
+    
+    protected final static Pattern positionPattern = Pattern.compile("([0-9]+)\\s+([0-9]+)");
     
     /**
      * @brief Creates a new position.
@@ -61,6 +65,27 @@ public class Position
     public int getY()
     {
         return this.y;
+    }
+    
+    /**
+     * @brief Parses a string to create a new position.
+     * @param s Reference to the string to parse.
+     * @return Reference to the new position or `NULL`.
+     */
+    public static Position parse(String s)
+    {
+        Matcher m = Position.positionPattern.matcher(s);
+        return m.matches() ?  new Position(Integer.parseInt(m.group(1)), Integer.parseInt(m.group(2))) : null;
+    }
+    
+    /**
+     * @brief Tests if a string can build a position.
+     * @param s Reference to the string to parse.
+     * @return `TRUE` if the string matches, `FALSE` otherwise.
+     */
+    public static boolean matches(String s)
+    {
+        return Position.positionPattern.matcher(s).matches();
     }
     
     /**
