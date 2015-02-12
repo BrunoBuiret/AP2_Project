@@ -28,7 +28,7 @@ public class Program
             break;
                 
             case 2:
-                t.addPlayer(new RecursiveComputerPlayer("IterativeComputer",  'o', t));
+                t.addPlayer(new IterativeComputerPlayer("IterativeComputer",  'o', t));
             break;
                 
             case 3:

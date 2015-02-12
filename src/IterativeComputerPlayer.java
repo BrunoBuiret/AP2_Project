@@ -12,6 +12,7 @@ public class IterativeComputerPlayer extends ComputerPlayer
     public IterativeComputerPlayer(String name, char representation, TicTacToe game)
     {
         super(name, representation, game);
+        throw new RuntimeException("This class hasn't been implemented yet.");
     }
 
     /* (non-Javadoc)
