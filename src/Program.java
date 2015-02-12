@@ -9,7 +9,7 @@ public class Program
     public static void main(String[] args)
     {
         TicTacToe t = new TicTacToe();
-        t.addPlayer(new HumanPlayer("Human",  'x'));
+        t.addPlayer(new HumanPlayer("Human",  'x', t));
         
         // Display the AI kinds
         System.out.println("==[Tic Tac Toe]====");
@@ -24,11 +24,11 @@ public class Program
         switch(menuItemId)
         {
             case 1:
-                t.addPlayer(new RecursiveComputerPlayer("RecursiveComputer",  'o'));
+                t.addPlayer(new RecursiveComputerPlayer("RecursiveComputer",  'o', t));
             break;
                 
             case 2:
-                t.addPlayer(new RecursiveComputerPlayer("IterativeComputer",  'o'));
+                t.addPlayer(new RecursiveComputerPlayer("IterativeComputer",  'o', t));
             break;
                 
             case 3:

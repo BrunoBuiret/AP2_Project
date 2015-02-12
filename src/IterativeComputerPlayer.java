@@ -4,8 +4,22 @@
  */
 public class IterativeComputerPlayer extends ComputerPlayer
 {
-    public IterativeComputerPlayer(String name, char representation)
+    /**
+     * @param name
+     * @param representation
+     * @param game
+     */
+    public IterativeComputerPlayer(String name, char representation, TicTacToe game)
     {
-        super(name, representation);
+        super(name, representation, game);
+    }
+
+    /* (non-Javadoc)
+     * @see Player#getNextPosition(Board)
+     */
+    public Position getNextPosition(Board b)
+    {
+        // TODO: Iterative algorithm to determine the next best position to play
+        return null;
     }
 }

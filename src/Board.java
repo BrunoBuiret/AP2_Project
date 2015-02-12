@@ -62,6 +62,22 @@ public class Board
     }
     
     /**
+     * @return
+     */
+    public int getHeight()
+    {
+        return this.height;
+    }
+    
+    /**
+     * @return
+     */
+    public int getWidth()
+    {
+        return this.width;
+    }
+    
+    /**
      * @brief Places a pawn on the board.
      * @param x Pawn's position's abscissa.
      * @param y Pawn's position's ordinate.
@@ -184,6 +200,8 @@ public class Board
         // Build the board's body
         for(y = 0; y < this.height; y++)
         {
+            s.append("|");
+            
             for(x = 0; x < this.width; x++)
             {
                 s.append(this.board[x][y] != null ? this.board[x][y].getRepresentation() : ' ');

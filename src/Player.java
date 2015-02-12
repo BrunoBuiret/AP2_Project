@@ -15,14 +15,20 @@ public abstract class Player
     protected char representation;
     
     /**
+     * @brief Holds a reference to the game.
+     */
+    protected TicTacToe game;
+    
+    /**
      * @brief Creates a new player.
      * @param name Name of the new player.
      * @param representation Character representing the player on the board.
      */
-    public Player(String name, char representation)
+    public Player(String name, char representation, TicTacToe game)
     {
         this.name = name;
         this.representation = representation;
+        this.game = game;
     }
     
     /**
@@ -42,6 +48,12 @@ public abstract class Player
     {
         return this.representation;
     }
+    
+    /**
+     * @param b
+     * @return
+     */
+    public abstract Position getNextPosition(Board b);
     
     /**
      * @brief Tests if another player is equal to this one.

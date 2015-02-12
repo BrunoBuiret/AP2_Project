@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +19,18 @@ public class TicTacToe
     protected List<Player> players;
     
     /**
+     * @brief Holds the number of moves that have been played.
+     */
+    protected int movesNumber;
+    
+    /**
      * @brief Creates a new Tic Tac Toe game.
      */
     public TicTacToe()
     {
         this.board = new Board(3,  3);
         this.players = new ArrayList<Player>();
+        this.movesNumber = 0;
     }
     
     /**
@@ -41,6 +46,14 @@ public class TicTacToe
         {
             throw new IllegalStateException("The players' list is already full.");
         }
+    }
+    
+    /**
+     * @return
+     */
+    public List<Player> getPlayers()
+    {
+        return this.players;
     }
     
     /**
@@ -66,59 +79,169 @@ public class TicTacToe
     }
     
     /**
-     * 
+     * @brief Runs the game.
      */
     public void run()
     {
         // Check if there is the required number of players
         if(this.players.size() == 2)
         {
-            boolean keepLooping = false;
+            boolean keepLooping = true;
             int playerIndex = this.players.get(0) instanceof HumanPlayer ? 0 : 1;
             
-            do
+            while(keepLooping)
             {
-                System.out.println(this.board);
+                // Display the board
+                System.out.print(this.board);
                 
-                if(this.players.get(playerIndex) instanceof HumanPlayer)
+                // Let the current user do something
+                boolean keepPlaying = false;
+                
+                do
                 {
-                    // Display what the user can do
-                    System.out.println(String.format(
-                            "%s: What do you want to do?",
-                            this.players.get(playerIndex)
-                        ));
-                    System.out.println(" Play: <column> <row>");
-                    System.out.println(" Quit: q");
-                    
-                    // Ask the user what he wants to do
-                    boolean keepScanning = true;
-                    String stringToParse;
-                    
-                    do
+                    if(this.players.get(playerIndex) instanceof HumanPlayer)
                     {
-                        try
+                        Position p = this.players.get(playerIndex).getNextPosition(this.board);
+                        
+                        if(p != null)
                         {
-                            System.out.print(" > ");
-                            stringToParse = Input.readLine();
-                            keepScanning = !(Position.matches(stringToParse) || stringToParse.compareTo("q") == 0);
+                            try
+                            {
+                                // Try playing this position
+                                this.play(this.players.get(playerIndex), p);
+                                this.movesNumber++;
+                                
+                                // Tell the user what position was played
+                                System.out.println(String.format("You played %s.", p));
+                                System.out.println();
+                                
+                                // Stop playing
+                                keepPlaying = false;
+                            }
+                            catch(InvalidParameterException e)
+                            {
+                                System.err.println(e.getMessage());
+                                keepPlaying = true;
+                            }
                         }
-                        catch(IOException e)
+                        else
                         {
-                            keepScanning = true;
+                            System.err.println("Invalid move, try another one.");
+                            keepPlaying = true;
                         }
                     }
-                    while(keepScanning);
+                    else
+                    {
+                        Position p = this.players.get(playerIndex).getNextPosition(this.board);
+                        
+                        if(p != null)
+                        {
+                            try
+                            {
+                                // Try playing this position
+                                this.play(this.players.get(playerIndex), p);
+                                this.movesNumber++;
+                                
+                                // Tell the user what position was played
+                                System.out.println(String.format("%s played %s.", this.players.get(playerIndex), p));
+                                System.out.println();
+                                
+                                // Stop looping
+                                keepPlaying = false;
+                            }
+                            catch(InvalidParameterException e)
+                            {
+                                keepPlaying = true;
+                            }
+                        }
+                        else
+                        {
+                            keepPlaying = true;
+                        }
+                    }
                 }
-                else
+                while(keepPlaying);
+                
+                // Check if the player won the game
+                if(this.check(this.players.get(playerIndex)))
                 {
-                    
+                    System.out.print(this.board);
+                    System.out.println(String.format("%s has won.", this.players.get(playerIndex)));
+                    System.out.println();
+                    keepLooping = false;
                 }
+                // Or if the game is a draw
+                else if(this.movesNumber == 9)
+                {
+                    System.out.print(this.board);
+                    System.out.println("Nobody won.");
+                    System.out.println();
+                    keepLooping = false;
+                }
+                
+                playerIndex = ++playerIndex % 2;
             }
-            while(keepLooping);
         }
         else
         {
             throw new IllegalStateException(String.format("The players' list isn't full : %d out of 2.", this.players.size()));
         }
+    }
+    
+    /**
+     * @brief Checks if a player has won.
+     * @param p Reference to the player to test for.
+     * @return `TRUE` if the player has won, `FALSE` otherwise.
+     */
+    protected boolean check(Player p)
+    {
+        // Check horizontals and verticals
+        for(int i = 0; i < 3; i++)
+        {
+            if(
+                (
+                    this.board.getAt(i, 0) != null && this.board.getAt(i, 0).equals(p)
+                    &&
+                    this.board.getAt(i, 1) != null && this.board.getAt(i, 1).equals(p)
+                    &&
+                    this.board.getAt(i, 2) != null && this.board.getAt(i, 2).equals(p)
+                )
+                ||
+                (
+                    this.board.getAt(0, i) != null && this.board.getAt(0, i).equals(p)
+                    &&
+                    this.board.getAt(1, i) != null && this.board.getAt(1, i).equals(p)
+                    &&
+                    this.board.getAt(2, i) != null && this.board.getAt(2, i).equals(p)
+                )
+            )
+            {
+                return true;
+            }
+        }
+        
+        // Check diagonals
+        if(
+            (
+                this.board.getAt(0, 0) != null && this.board.getAt(0, 0).equals(p)
+                &&
+                this.board.getAt(1, 1) != null && this.board.getAt(1, 1).equals(p)
+                &&
+                this.board.getAt(2, 2) != null && this.board.getAt(2, 2).equals(p)
+            )
+            ||
+            (
+                this.board.getAt(2, 0) != null && this.board.getAt(2, 0).equals(p)
+                &&
+                this.board.getAt(1, 1) != null && this.board.getAt(1, 1).equals(p)
+                &&
+                this.board.getAt(0, 2) != null && this.board.getAt(0, 2).equals(p)
+            )
+        )
+        {
+            return true;
+        }
+        
+        return false;
     }
 }

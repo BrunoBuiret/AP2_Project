@@ -18,7 +18,7 @@ public class Position
      */
     protected final int y;
     
-    protected final static Pattern positionPattern = Pattern.compile("([0-9]+)\\s+([0-9]+)");
+    protected final static Pattern positionPattern = Pattern.compile("^\\s?([0-9]+)\\s+([0-9]+)\\s?$");
     
     /**
      * @brief Creates a new position.
@@ -102,5 +102,15 @@ public class Position
         }
         
         return false;
+    }
+    
+    /**
+     * @brief Gets a string representation of a position.
+     * @return Position's string representation.
+     * @see java.lang.Object#toString()
+     */
+    public String toString()
+    {
+        return String.format("(%d ; %d)", this.x, this.y);
     }
 }

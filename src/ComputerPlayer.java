@@ -4,8 +4,13 @@
  */
 public abstract class ComputerPlayer extends Player
 {
-    public ComputerPlayer(String name, char representation)
+    /**
+     * @brief Creates a new computer player.
+     * @param name Computer's name.
+     * @param representation Computer's representation on the board.
+     */
+    public ComputerPlayer(String name, char representation, TicTacToe game)
     {
-        super(name, representation);
+        super(name, representation, game);
     }
 }
