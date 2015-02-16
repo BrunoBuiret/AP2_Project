@@ -2,7 +2,7 @@ import java.io.IOException;
 
 /**
  * @brief Represents a human player.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class HumanPlayer extends Player
 {
@@ -10,6 +10,7 @@ public class HumanPlayer extends Player
      * @brief Creates a new human player.
      * @param name Player's name.
      * @param representation Player's representation on the board.
+     * @param game Reference to the game of Tic Tac Toe.
      */
     public HumanPlayer(String name, char representation, TicTacToe game)
     {
@@ -19,6 +20,7 @@ public class HumanPlayer extends Player
     /**
      * @brief Let the user type which position they want to play.
      * @param b Reference to the board which isn't used by this method.
+     * @return Reference to the next position to play.
      * @see Player#getNextPosition(Board)
      */
     public Position getNextPosition(Board b)

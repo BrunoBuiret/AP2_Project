@@ -2,7 +2,7 @@ import java.security.InvalidParameterException;
 
 /**
  * @brief Represents a simple two-dimensional board.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class Board
 {
@@ -25,6 +25,7 @@ public class Board
      * @brief Creates a new board.
      * @param width Board's width.
      * @param height Board's height.
+     * @throws InvalidParameterException Thrown when the board's width or height is invalid.
      */
     public Board(int width, int height)
     {
@@ -62,7 +63,8 @@ public class Board
     }
     
     /**
-     * @return
+     * @brief Gets a board's height.
+     * @return Board's height.
      */
     public int getHeight()
     {
@@ -70,7 +72,8 @@ public class Board
     }
     
     /**
-     * @return
+     * @brief Gets a board's width.
+     * @return Board's width.
      */
     public int getWidth()
     {
@@ -82,6 +85,7 @@ public class Board
      * @param x Pawn's position's abscissa.
      * @param y Pawn's position's ordinate.
      * @param p Reference to the pawn's owner.
+     * @throws InvalidParameterException Thrown when the position's abscissa or ordinate is invalid.
      */
     public void setAt(int x, int y, Player p)
     {
@@ -132,6 +136,7 @@ public class Board
      * @param x Pawn's position's abscissa.
      * @param y Pawn's position's ordinate.
      * @return Reference to the player or `NULL`.
+     * @throws InvalidParameterException Thrown when the position's abscissa or ordinate is invalid.
      */
     public Player getAt(int x, int y)
     {

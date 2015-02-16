@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 /**
  * @brief Represents a two-dimensional position.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class Position
 {
@@ -18,13 +18,16 @@ public class Position
      */
     protected final int y;
     
+    /**
+     * @brief Holds a reference to the position pattern.
+     */
     protected final static Pattern positionPattern = Pattern.compile("^\\s?([0-9]+)\\s+([0-9]+)\\s?$");
     
     /**
      * @brief Creates a new position.
      * @param x Position's abscissa.
      * @param y Position's ordinate.
-     * @throws InvalidParameterException
+     * @throws InvalidParameterException Thrown when the position's abscissa or ordinate is invalid.
      */
     public Position(int x, int y) throws InvalidParameterException
     {
@@ -76,16 +79,6 @@ public class Position
     {
         Matcher m = Position.positionPattern.matcher(s);
         return m.matches() ?  new Position(Integer.parseInt(m.group(1)), Integer.parseInt(m.group(2))) : null;
-    }
-    
-    /**
-     * @brief Tests if a string can build a position.
-     * @param s Reference to the string to parse.
-     * @return `TRUE` if the string matches, `FALSE` otherwise.
-     */
-    public static boolean matches(String s)
-    {
-        return Position.positionPattern.matcher(s).matches();
     }
     
     /**

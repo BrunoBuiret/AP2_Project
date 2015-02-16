@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 /**
  * @brief Main entry point of the program.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class Program
 {

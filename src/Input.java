@@ -5,10 +5,13 @@ import java.util.List;
 
 /**
  * @brief Utility class to ask the user for input.
- * @author
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public abstract class Input
 {
+    /**
+     * @brief Holds a reference to a buffered reader used for user input.
+     */
     protected static BufferedReader reader = null;
     
     static
@@ -17,8 +20,9 @@ public abstract class Input
     }
     
     /**
-     * @return
-     * @throws IOException
+     * @brief Reads a line of user input.
+     * @return Reference to the string read from user input.
+     * @throws IOException Thrown when an input error occurs.
      */
     public static String readLine() throws IOException
     {
@@ -26,8 +30,9 @@ public abstract class Input
     }
     
     /**
-     * @param possibleValues
-     * @return
+     * @brief Asks the user for a value from a set.
+     * @param possibleValues List of possible integer values.
+     * @return Selected value.
      */
     public static Integer selectInteger(List<Integer> possibleValues)
     {

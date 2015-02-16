@@ -4,14 +4,15 @@ import java.util.Random;
 
 /**
  * @brief Represents an AI that uses an iterative algorithm.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class IterativeComputerPlayer extends ComputerPlayer
 {
     /**
-     * @param name
-     * @param representation
-     * @param game
+     * @brief Creates a new computer player which uses an iterative algorithm.
+     * @param name Name of the new player.
+     * @param representation Character representing the player on the board.
+     * @param game Reference to the game of Tic Tac Toe.
      */
     public IterativeComputerPlayer(String name, char representation, TicTacToe game)
     {
@@ -19,6 +20,9 @@ public class IterativeComputerPlayer extends ComputerPlayer
     }
 
     /**
+     * @brief Determines the next best position to play using an iterative algorithm.
+     * @param b Reference to the board.
+     * @return Reference to the next position to play or `NULL` if it was unable to determine one.
      * @see Player#getNextPosition(Board)
      */
     public Position getNextPosition(Board b)
@@ -91,9 +95,10 @@ public class IterativeComputerPlayer extends ComputerPlayer
     }
     
     /**
-     * @param b
-     * @param i
-     * @return
+     * @brief Utility method to determine the next position to play according to a line, column or diagonal.
+     * @param b Reference to the board.
+     * @param i Parameter to determine which line, column or diagonal to look through.
+     * @return Reference to the next position to play or `NULL` if it was impossible to determine one.
      */
     protected Position determineNextPosition(Board b, int i)
     {

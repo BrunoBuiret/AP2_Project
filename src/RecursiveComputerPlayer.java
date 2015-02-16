@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * @brief Represents an AI that uses a recursive algorithm.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class RecursiveComputerPlayer extends ComputerPlayer
 {
@@ -18,7 +18,7 @@ public class RecursiveComputerPlayer extends ComputerPlayer
     }
 
     /**
-     * @brief 
+     * @brief Determines the next best position to play using a recursive algorithm.
      * @see Player#getNextPosition(Board)
      */
     public Position getNextPosition(Board b)
@@ -27,6 +27,16 @@ public class RecursiveComputerPlayer extends ComputerPlayer
         return minimaxResult[1] != -1 && minimaxResult[2] != -1 ? new Position(minimaxResult[1], minimaxResult[2]) : null;
     }
     
+    /**
+     * @brief Uses the minimax algorithm to determine the next best position to play.
+     * @param player Reference to the "current player". 
+     * @param board Reference to the board.
+     * @param depth Current depth of the algorithm.
+     * @param alpha Holds the maximum found value.
+     * @param beta Holds the minimum found value.
+     * @return Array containing the best obtained score while searching, and then the best next column and row to play.
+     * @see http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe_AI.html
+     */
     protected int[] minimax(Player player, Board board, int depth, int alpha, int beta)
     {
         // First, determine every available moves by going through the board

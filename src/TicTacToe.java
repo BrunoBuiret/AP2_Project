@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @brief Represents a game of tic tac toe.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public class TicTacToe
 {
@@ -34,7 +34,8 @@ public class TicTacToe
     }
     
     /**
-     * @param p 
+     * @brief Adds a player to a game of Tic Tac Toe.
+     * @param p Reference to the player to add.
      */
     public void addPlayer(Player p)
     {
@@ -49,7 +50,8 @@ public class TicTacToe
     }
     
     /**
-     * @return
+     * @brief Gets a game's list of players.
+     * @return Reference to the list of players.
      */
     public List<Player> getPlayers()
     {

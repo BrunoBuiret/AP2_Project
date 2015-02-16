@@ -1,6 +1,6 @@
 /**
  * @brief Represents an abstract player.
- * @author 
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
 public abstract class Player
 {
@@ -23,6 +23,7 @@ public abstract class Player
      * @brief Creates a new player.
      * @param name Name of the new player.
      * @param representation Character representing the player on the board.
+     * @param game Reference to the game of Tic Tac Toe.
      */
     public Player(String name, char representation, TicTacToe game)
     {
@@ -50,8 +51,9 @@ public abstract class Player
     }
     
     /**
-     * @param b
-     * @return
+     * @brief Gets a player's next position to play on the board.
+     * @param b Reference to the board
+     * @return Reference to the next position to play.
      */
     public abstract Position getNextPosition(Board b);
     
