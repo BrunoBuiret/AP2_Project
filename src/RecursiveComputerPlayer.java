@@ -42,9 +42,9 @@ public class RecursiveComputerPlayer extends ComputerPlayer
         // First, determine every available moves by going through the board
         ArrayList<Position> availableMoves = new ArrayList<Position>();
         
-        for(int y = 0; y < board.getHeight(); y++)
+        for(int y = 0; y < 3; y++)
         {
-            for(int x = 0; x < board.getWidth(); x++)
+            for(int x = 0; x < 3; x++)
             {
                 if(board.getAt(x, y) == null)
                 {
