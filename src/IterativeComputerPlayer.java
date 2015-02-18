@@ -102,11 +102,12 @@ public class IterativeComputerPlayer extends ComputerPlayer
      */
     protected Position determineNextPosition(Board b, int i)
     {
-        if(i >= 0 && i <= 7)
+        switch(i)
         {
             // Determine the first empty cell in a row
-            if(i >= 0 && i <= 2)
-            {
+            case 0:
+            case 1:
+            case 2:
                 for(int j = 0; j < 3; j++)
                 {
                     if(b.getAt(j, i) == null)
@@ -114,10 +115,12 @@ public class IterativeComputerPlayer extends ComputerPlayer
                         return new Position(j, i);
                     }
                 }
-            }
+            break;
+            
             // Determine the first empty cell in a column
-            else if(i >= 3 && i <= 5)
-            {
+            case 3:
+            case 4:
+            case 5:
                 for(int j = 0; j < 3; j++)
                 {
                     if(b.getAt(i - 3, j) == null)
@@ -125,10 +128,10 @@ public class IterativeComputerPlayer extends ComputerPlayer
                         return new Position(i - 3, j);
                     }
                 }
-            }
+            break;
+            
             // Determine the first empty cell in the first diagonal
-            else if(i == 6)
-            {
+            case 6:
                 for(int j = 0; j < 3; j++)
                 {
                     if(b.getAt(j, j) == null)
@@ -136,10 +139,10 @@ public class IterativeComputerPlayer extends ComputerPlayer
                         return new Position(j, j);
                     }
                 }
-            }
-         // Determine the first empty cell in the second diagonal
-            else
-            {
+            break;
+            
+            // Determine the first empty cell in the second diagonal
+            case 7:
                 for(int j = 0; j < 3; j++)
                 {
                     if(b.getAt(2 - j, j) == null)
@@ -147,13 +150,12 @@ public class IterativeComputerPlayer extends ComputerPlayer
                         return new Position(2 - j, j);
                     }
                 }
-            }
+            break;
             
-            return null;
+            default:
+                throw new InvalidParameterException("i must be between 0 and 7.");
         }
-        else
-        {
-            throw new InvalidParameterException("i must be between 0 and 7.");
-        }
+        
+        return null;
     }
 }

@@ -4,7 +4,7 @@ import java.util.Arrays;
  * @brief Main entry point of the program.
  * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
  */
-public class Program
+public abstract class Program
 {
     public static void main(String[] args)
     {
