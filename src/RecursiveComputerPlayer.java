@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * @brief Represents an AI that uses a recursive algorithm.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public class RecursiveComputerPlayer extends ComputerPlayer
 {

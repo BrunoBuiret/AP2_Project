@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * @brief Represents an AI that uses an iterative algorithm.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public class IterativeComputerPlayer extends ComputerPlayer
 {

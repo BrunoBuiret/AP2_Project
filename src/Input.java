@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @brief Utility class to ask the user for input.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public abstract class Input
 {

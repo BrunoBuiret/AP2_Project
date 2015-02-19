@@ -2,7 +2,7 @@ import java.io.IOException;
 
 /**
  * @brief Represents a human player.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public class HumanPlayer extends Player
 {

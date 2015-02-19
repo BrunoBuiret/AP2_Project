@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @brief Represents a game of tic tac toe.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public class TicTacToe
 {

@@ -2,7 +2,7 @@ import java.security.InvalidParameterException;
 
 /**
  * @brief Represents a simple two-dimensional board.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public class Board
 {

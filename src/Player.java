@@ -1,6 +1,6 @@
 /**
  * @brief Represents an abstract player.
- * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sidney Adjou
+ * @author Bruno Buiret, Thomas Arnaud, Mathieu Thouret, Sydney Adjou
  */
 public abstract class Player
 {
